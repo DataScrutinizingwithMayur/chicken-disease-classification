@@ -7,5 +7,3 @@ data_ingestion:
   source_URL: https://github.com/DataScrutinizingwithMayur/chicken-disease-classification/raw/main/data/Chicken-fecal-images.zip
   local_data_file: artifacts/data_ingestion/data.zip
   unzip_dir: artifacts/data_ingestion
-
-
