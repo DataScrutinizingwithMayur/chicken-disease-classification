@@ -1,158 +1,63 @@
-# Chicken-Disease-Classification--Project
+# Chicken Disease Classification Project
 
+## Overview
+This project focuses on classifying fecal specimen images into two categories: coccidiosis fecal and non-coccidiosis fecal. It leverages deep learning models to automate the classification process, providing a robust tool for chicken disease management.
 
-## Workflows
+## Technical Workflow
 
-1. Update config.yaml
-2. Update secrets.yaml [Optional]
-3. Update params.yaml
-4. Update the entity
-5. Update the configuration manager in src config
-6. Update the components
-7. Update the pipeline 
-8. Update the main.py
-9. Update the dvc.yaml
+### Configuration Files
+- **`config.yaml`**: Update this file to modify the project configuration.
+- **`secrets.yaml`** (Optional): Update this file to include any secrets or sensitive information.
+- **`params.yaml`**: Define or update parameters for model training and evaluation.
+- **Entity and Configuration Management**: Make necessary updates in the `src/config` directory to reflect changes in the entity and configuration manager.
 
+### Components and Pipeline
+- Update the components and the pipeline configuration as needed.
+- Modify `main.py` and `dvc.yaml` to reflect changes in the project's data processing and model training workflows.
 
-# How to run?
-### STEPS:
+## Installation and Running the Project
 
-Clone the repository
+### Clone the Repository
+git clone https://github.com/DataScrutinizingwithMayur/chicken-disease-classification
 
-```bash
-https://github.com/entbappy/Chicken-Disease-Classification--Project
-```
-### STEP 01- Create a conda environment after opening the repository
-
-```bash
+### Environment Setup
+1. Create and activate a new Conda environment:
 conda create -n cnncls python=3.8 -y
-```
-
-```bash
 conda activate cnncls
-```
 
-
-### STEP 02- install the requirements
-```bash
+2. Install the required dependencies:
 pip install -r requirements.txt
-```
 
-
-```bash
-# Finally run the following command
+3. Run the application:
 python app.py
-```
 
-Now,
-```bash
-open up you local host and port
-```
+After running, open your local host and port as directed by the application output.
 
-
-### DVC cmd
-
-1. dvc init
-2. dvc repro
-3. dvc dag
+### DVC Commands
+To manage and track data versions, use the following DVC commands:
+dvc init
+dvc repro
+dvc dag
 
 
+## AWS CI/CD Deployment with GitHub Actions
 
-# AWS-CICD-Deployment-with-Github-Actions
+### AWS Setup
+1. **IAM User Creation**: Create an IAM user with EC2 access, ECR access for managing docker images, and full access policies:
+   - `AmazonEC2ContainerRegistryFullAccess`
+   - `AmazonEC2FullAccess`
+2. **ECR Repository**: Create an ECR repository to store your docker images. Note the URI for later use.
+3. **EC2 Setup**: Launch an EC2 instance (Ubuntu) and install Docker.
 
-## 1. Login to AWS console.
+### Deployment Steps
+1. Build the docker image of the source code.
+2. Push the docker image to your ECR repository.
+3. Launch your EC2 instance and pull the image from ECR.
+4. Launch the docker image in EC2.
 
-## 2. Create IAM user for deployment
+### GitHub Actions for CI/CD
+- Configure your EC2 as a self-hosted runner.
+- Setup GitHub secrets for AWS credentials and repository details.
 
-	#with specific access
-
-	1. EC2 access : It is virtual machine
-
-	2. ECR: Elastic Container registry to save your docker image in aws
-
-
-	#Description: About the deployment
-
-	1. Build docker image of the source code
-
-	2. Push your docker image to ECR
-
-	3. Launch Your EC2 
-
-	4. Pull Your image from ECR in EC2
-
-	5. Lauch your docker image in EC2
-
-	#Policy:
-
-	1. AmazonEC2ContainerRegistryFullAccess
-
-	2. AmazonEC2FullAccess
-
-	
-## 3. Create ECR repo to store/save docker image
-    - Save the URI: 654654291424.dkr.ecr.us-east-2.amazonaws.com/chickenfecalproject
-
-	
-## 4. Create EC2 machine (Ubuntu) 
-
-## 5. Open EC2 and Install docker in EC2 Machine:
-	
-	
-	#optinal
-
-	sudo apt-get update -y
-
-	sudo apt-get upgrade
-	
-	#required
-
-	curl -fsSL https://get.docker.com -o get-docker.sh
-
-	sudo sh get-docker.sh
-
-	sudo usermod -aG docker ubuntu
-
-	newgrp docker
-	
-# 6. Configure EC2 as self-hosted runner:
-    setting>actions>runner>new self hosted runner> choose os> then run command one by one
-
-
-# 7. Setup github secrets:
-
-    AWS_ACCESS_KEY_ID=
-
-    AWS_SECRET_ACCESS_KEY=
-
-    AWS_REGION = us-east-1
-
-    AWS_ECR_LOGIN_URI = demo>>  566373416292.dkr.ecr.ap-south-1.amazonaws.com
-
-    ECR_REPOSITORY_NAME = simple-app
-
-
-
-
-# AZURE-CICD-Deployment-with-Github-Actions
-
-## Save pass:
-
-s3cEZKH5yytiVnJ3h+eI3qhhzf9q1vNwEi6+q+WGdd+ACRCZ7JD6
-
-
-## Run from terminal:
-
-docker build -t chickenapp.azurecr.io/chicken:latest .
-
-docker login chickenapp.azurecr.io
-
-docker push chickenapp.azurecr.io/chicken:latest
-
-
-## Deployment Steps:
-
-1. Build the Docker image of the Source Code
-2. Push the Docker image to Container Registry
-3. Launch the Web App Server in Azure 
-4. Pull the Docker image from the container registry to Web App server and run 
+## Contributing
+Contributions are welcome! For major changes, please open an issue first to discuss what you would like to change.
