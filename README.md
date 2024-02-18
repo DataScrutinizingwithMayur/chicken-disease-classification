@@ -22,22 +22,22 @@ git clone https://github.com/DataScrutinizingwithMayur/chicken-disease-classific
 
 ### Environment Setup
 1. Create and activate a new Conda environment:
-conda create -n cnncls python=3.8 -y
-conda activate cnncls
+- conda create -n cnncls python=3.8 -y
+- conda activate cnncls
 
 2. Install the required dependencies:
-pip install -r requirements.txt
+- pip install -r requirements.txt
 
 3. Run the application:
-python app.py
+- python app.py
 
 After running, open your local host and port as directed by the application output.
 
 ### DVC Commands
 To manage and track data versions, use the following DVC commands:
-dvc init
-dvc repro
-dvc dag
+- dvc init
+- dvc repro
+- dvc dag
 
 
 ## AWS CI/CD Deployment with GitHub Actions
